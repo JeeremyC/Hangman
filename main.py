@@ -1,17 +1,9 @@
 from multiprocessing.sharedctypes import Value
 import os
-import random
 
-def words():
-    words = []
+from words import words
 
-    with open('./data/words.txt', 'r', encoding='utf-8') as wr:
-        for line in wr:
-            words.append(line)
 
-    word = random.choice(words)
-    word = word.replace(word[-1], '')
-    print(word)
 
 
 def phrases():
