@@ -1,16 +1,16 @@
-from statistics import mode
+
 from Words import Words
 
 
 class Game:
     
     mode = int
-    lives = int
+    diff = int
 
-    def start(mode, lives):
+    def start(mode, diff):
 
         if mode == 1:
-            Words.words(lives)
+            Words.words(diff)
         elif mode == 2:
             pass #Phrases
         else:
