@@ -1,4 +1,5 @@
 from statistics import mode
+from Words import Words
 
 
 class Game:
@@ -7,4 +8,10 @@ class Game:
     lives = int
 
     def start(mode, lives):
-        pass
+
+        if mode == 1:
+            Words.words(lives)
+        elif mode == 2:
+            pass #Phrases
+        else:
+            pass #Catch errors
