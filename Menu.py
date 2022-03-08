@@ -41,7 +41,7 @@ class Menu:
 
     def difficulty():
 
-        os.system('clear')
+        os.system('cls')
         print('\n\n*', '\U0001F47E', '* SELECT DIFFICULTY *','\U0001F47E','*')
         print('''
         1- easy (10 lives) \n

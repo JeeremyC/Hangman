@@ -10,7 +10,7 @@ class Game:
 
     def start(mode, diff):
 
-        os.system('clear')
+        os.system('cls')
         
 
 
@@ -41,25 +41,43 @@ class Game:
         guess = key.translate(mytable)
         print(key)
 
+        
 
         #prompt for an attemp
         while guess != key:
 
+            #Print underscores
             print(guess+"\n\n")
+
+            #input
             attemp = input('\U0001F449' + ' ')
-            if len(attemp) == 1:
+            lenght = len(attemp)
+            #if it is a character...
+            if lenght == 1:
 
-                for letter in key:
-                    print(letter)
-                    if letter == attemp:
-                        x = key.find(attemp)
-                        #guess[x] = attemp
-                        i = guess.replace(letter,attemp)
-                        guess = i
+
+                #for letter in key:
+                #    print(letter)
+                #    if attemp == letter:
+                #        print('founded')
+                #        guess[lenght] = attemp
+                #    else:
+                #        print('not founded')
+
+                #for c in range(len(key)):
+                #    print(c)
+                #    if attemp == c:
+                #        attemp += guess[c]
+                #        print('founded')
+
+                for count, value in enumerate(key):
+                    if value == attemp:
                         print('founded')
-                    else:
-                        print('not found')          
+                        lst = list(guess)
+                        lst[count] = attemp
+                        guess = ''.join(lst)
 
+                    
             else:
                 print('Try entering one character')
 
