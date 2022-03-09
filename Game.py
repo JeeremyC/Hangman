@@ -1,4 +1,3 @@
-#from gettext import find
 from Words import Words
 from Phrases import Phrases
 import os
@@ -19,10 +18,9 @@ class Game:
         #Pick a random word or phrase 
         if mode == 1:
             key = Words.words()
-        elif mode == 2:
-            key = Phrases.phrases()
         else:
-            pass #Catch an error
+            key = Phrases.phrases()
+            
 
 
         #Amount of lives
@@ -30,10 +28,8 @@ class Game:
             lives = 10
         elif diff == 2:
             lives = 5
-        elif diff == 3:
+        else:
             lives = 3
-        else: 
-            pass #Catch an error
 
 
         #replace each character by underscore
@@ -50,7 +46,6 @@ class Game:
                 l = '\U00002764'
                 lst_lives = [l for i in range(lives)]
                 print(*lst_lives)
-                #\U00002764
 
                 #Print underscores
                 print('\n\n'+'\U0001F52E  '+guess+"\n\n")
@@ -73,9 +68,14 @@ class Game:
                         lives -= 1
                 
                 else:
-                    time.sleep(1)
                     print('\U0001F604'+' Try entering one character')
+                    time.sleep(2)
                     
+                if lives <= 0:
+                    print('The random key was: '+key+'  \U00002728')
+                    print('\U0000274C')
+                    time.sleep(3)
+                    exit()
         
         if key == guess:
             print('The random key was: '+key+'  \U00002728')
@@ -83,27 +83,4 @@ class Game:
             time.sleep(3)
             exit()
 
-        if lives <= 0:
-            print('The random key was: '+key+'  \U00002728')
-            print('\U0000274C')
-            time.sleep(3)
-            exit()
-
-
-
-
-
-
-
-'''
-Lista de emojis:
-U+1F387 Fuegos artificiales amarillos
-U+1F386 Fuegos artificiales morados
-U+2728 estrellitas magicas
-U+1F389 Confeti
-U+1F38A campanas
-U+2764 corazon 
-'''
-
-
-
+        
