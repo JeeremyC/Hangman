@@ -15,4 +15,3 @@ class Words:
         word = word.replace(word[-1], '')
 
         return word
-

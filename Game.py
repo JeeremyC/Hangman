@@ -1,5 +1,6 @@
 #from gettext import find
 from Words import Words
+from Phrases import Phrases
 import os
 import time
 
@@ -17,10 +18,9 @@ class Game:
 
         #Pick a random word or phrase 
         if mode == 1:
-            print('\n\n - choosing a random word...')
-            pick = Words.words()
+            key = Words.words()
         elif mode == 2:
-            pass #Phrases
+            key = Phrases.phrases()
         else:
             pass #Catch an error
 
@@ -36,11 +36,9 @@ class Game:
             pass #Catch an error
 
 
-        #Duplicate pick and replace each character by underscore
-        key = pick
+        #replace each character by underscore
         mytable = key.maketrans("qwertyuiopasdfghjklzxcvbnm","__________________________")
         guess = key.translate(mytable)
-        print(' - random word found')
 
 
             #prompt for an attemp
@@ -78,17 +76,18 @@ class Game:
                     time.sleep(1)
                     print('\U0001F604'+' Try entering one character')
                     
-                if lives <= 0:
-                    if key == guess:
-                        print('The random word was: '+key+'  \U00002728')
-                        print('Congrats, you win! '+'\U0001F389')
-                        time.sleep(3)
-                        exit()
-                    else:
-                        print('The random word was: '+key+'  \U00002728')
-                        print('\U0000274C')
-                        time.sleep(3)
-                        exit()
+        
+        if key == guess:
+            print('The random key was: '+key+'  \U00002728')
+            print('Congrats, you win! '+'\U0001F389')
+            time.sleep(3)
+            exit()
+
+        if lives <= 0:
+            print('The random key was: '+key+'  \U00002728')
+            print('\U0000274C')
+            time.sleep(3)
+            exit()
 
 
 
