@@ -1,6 +1,7 @@
-from gettext import find
+#from gettext import find
 from Words import Words
 import os
+import time
 
 
 class Game:
@@ -16,7 +17,7 @@ class Game:
 
         #Pick a random word or phrase 
         if mode == 1:
-            print('\n\n Choosing a random word...')
+            print('\n\n - choosing a random word...')
             pick = Words.words()
         elif mode == 2:
             pass #Phrases
@@ -39,49 +40,71 @@ class Game:
         key = pick
         mytable = key.maketrans("qwertyuiopasdfghjklzxcvbnm","__________________________")
         guess = key.translate(mytable)
-        print(key)
+        print(' - random word found')
 
-        
 
-        #prompt for an attemp
+            #prompt for an attemp
         while guess != key:
+                os.system('cls')
 
-            #Print underscores
-            print(guess+"\n\n")
+                #Print lives
+                print('Lives:')
+                l = '\U00002764'
+                lst_lives = [l for i in range(lives)]
+                print(*lst_lives)
+                #\U00002764
 
-            #input
-            attemp = input('\U0001F449' + ' ')
-            lenght = len(attemp)
-            #if it is a character...
-            if lenght == 1:
+                #Print underscores
+                print('\n\n'+'\U0001F52E  '+guess+"\n\n")
 
+                #input
+                attemp = input('\U0001F449' + ' ')
+                coincidence = False
 
-                #for letter in key:
-                #    print(letter)
-                #    if attemp == letter:
-                #        print('founded')
-                #        guess[lenght] = attemp
-                #    else:
-                #        print('not founded')
+                #if it is a character...
+                if len(attemp) == 1:
 
-                #for c in range(len(key)):
-                #    print(c)
-                #    if attemp == c:
-                #        attemp += guess[c]
-                #        print('founded')
+                    for count, value in enumerate(key):
+                        if value == attemp:
+                            lst = list(guess)
+                            lst[count] = attemp
+                            guess = ''.join(lst)
+                            coincidence = True
 
-                for count, value in enumerate(key):
-                    if value == attemp:
-                        print('founded')
-                        lst = list(guess)
-                        lst[count] = attemp
-                        guess = ''.join(lst)
-
+                    if coincidence == False:
+                        lives -= 1
+                
+                else:
+                    time.sleep(1)
+                    print('\U0001F604'+' Try entering one character')
                     
-            else:
-                print('Try entering one character')
+                if lives <= 0:
+                    if key == guess:
+                        print('The random word was: '+key+'  \U00002728')
+                        print('Congrats, you win! '+'\U0001F389')
+                        time.sleep(3)
+                        exit()
+                    else:
+                        print('The random word was: '+key+'  \U00002728')
+                        print('\U0000274C')
+                        time.sleep(3)
+                        exit()
 
 
+
+
+
+
+
+'''
+Lista de emojis:
+U+1F387 Fuegos artificiales amarillos
+U+1F386 Fuegos artificiales morados
+U+2728 estrellitas magicas
+U+1F389 Confeti
+U+1F38A campanas
+U+2764 corazon 
+'''
 
 
 
