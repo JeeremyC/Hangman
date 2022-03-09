@@ -1,4 +1,5 @@
 import os
+from Extras import Extras
 
 class Menu:
 
@@ -20,16 +21,12 @@ class Menu:
                 mode = int(input('\U0001F449' + ' '))
                 if mode == 1:
                     return mode
-                    sw = False
                 elif mode == 2:
                     return mode
-                    sw = False
                 elif mode == 3:
-                    #how()
-                    sw = False
+                    Extras.how()
                 elif mode == 4:
-                    #readme()
-                    sw = False
+                    Extras.readme()
                 elif mode == 5:
                     exit()
                 else:
